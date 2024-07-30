@@ -1,0 +1,62 @@
+{
+    "owner": "Marcia Calderon Campos",
+    "exercises": [
+      {
+        "name": "Leg Extension Machine",
+        "series": 3,
+        "repeats": 12,
+        "rest": 45,
+        "video": "https://www.youtube.com/watch?v=8ZwS4MpgupQ"
+      },
+      {
+        "name": "Hip Extension Machine",
+        "series": 3,
+        "repeats": 12,
+        "rest": 45,
+        "video": "https://www.youtube.com/watch?v=aO3TxzBtqKA"
+      },
+      {
+        "name": "Leg Curl Machine",
+        "series": 3,
+        "repeats": 12,
+        "rest": 45,
+        "video": "https://www.youtube.com/watch?v=iiIwg6xzHaw"
+      },
+      {
+        "name": "Front Shoulder Raise with Dumbbell (Pronated Grip)",
+        "series": 3,
+        "repeats": 12,
+        "rest": 45,
+        "video": "https://www.youtube.com/watch?v=-t7fuZ0KhDA"
+      },
+      {
+        "name": "Lateral Shoulder Raise with Dumbbells",
+        "series": 3,
+        "repeats": 12,
+        "rest": 45,
+        "video": "https://www.youtube.com/watch?v=3VcKaXpzqRo"
+      },
+      {
+        "name": "Seated Dumbbell Thrusters",
+        "series": 3,
+        "repeats": 12,
+        "rest": 45,
+        "video": "https://www.youtube.com/watch?v=CVqSnpCstUc"
+      },
+      {
+        "name": "Seated Calf Raise Machine",
+        "series": 3,
+        "repeats": 12,
+        "rest": 45,
+        "video": "https://www.youtube.com/watch?v=sgES7g8aP6U"
+      },
+      {
+        "name": "Hip Adduction Machine",
+        "series": 3,
+        "repeats": 12,
+        "rest": 45,
+        "video": "https://www.youtube.com/watch?v=Z6dIKY9ScbY"
+      }
+    ]
+  }
+  
