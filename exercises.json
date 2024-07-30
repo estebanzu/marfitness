@@ -1,0 +1,62 @@
+{
+  "owner": "Marcia Calderon Campos",
+  "exercises": [
+    {
+      "name": "Horizontal Chest Press with Barbell",
+      "series": 3,
+      "repeats": 12,
+      "rest": 45,
+      "video": "https://www.youtube.com/watch?v=6JtP6ju0IMw"
+    },
+    {
+      "name": "Incline Chest Press with Dumbbells",
+      "series": 3,
+      "repeats": 12,
+      "rest": 45,
+      "video": "https://www.youtube.com/watch?v=8iPEnn-ltC8"
+    },
+    {
+      "name": "Seated Row Machine",
+      "series": 3,
+      "repeats": 12,
+      "rest": 45,
+      "video": "https://www.youtube.com/watch?v=GZbfZ033f74"
+    },
+    {
+      "name": "Wide Grip Lat Pulldown with Bar",
+      "series": 3,
+      "repeats": 12,
+      "rest": 45,
+      "video": "https://www.youtube.com/watch?v=CAwf7n6Luuc"
+    },
+    {
+      "name": "Cable Bicep Curl with Bar (21s)",
+      "series": 3,
+      "repeats": "7-7-7",
+      "rest": 45,
+      "video": "https://www.youtube.com/watch?v=_mK7bYbG5KI"
+    },
+    {
+      "name": "Neutral Grip Dumbbell Curl",
+      "series": 3,
+      "repeats": 12,
+      "rest": 45,
+      "video": "https://www.youtube.com/watch?v=sAq_ocpRh_I"
+    },
+    {
+      "name": "Tricep Dips Machine",
+      "series": 3,
+      "repeats": 12,
+      "rest": 45,
+      "video": "https://www.youtube.com/watch?v=0326dy_-CzM"
+    },
+    {
+      "name": "Rope Tricep Extension",
+      "series": 3,
+      "repeats": 12,
+      "rest": 45,
+      "video": "https://www.youtube.com/watch?v=2-LAMcpzODU"
+    }
+  ]
+}
+
