@@ -9,7 +9,7 @@
 <body>
     <div class="container">
         <div class="banner">
-            <h1>Gym Exercises</h1>
+            <h1>August Exercises</h1>
         </div>
         <div class="owner" id="ownerName"></div>
         <div class="routine-selection">
@@ -22,11 +22,16 @@
                 Routine 2
             </label>
             <br>
-            <button onclick="submitRoutine()">Change Routine</button>
+            <button onclick="submitRoutine()" aria-label="Change Routine">Change Routine</button>
             <div class="instruction">If you want to change the routine, select it and click on submit again.</div>
+        </div>
+        <div class="instructions">
+            <p>Select a routine and click "Change Routine" to load the exercises.</p>
+            <p>Mark exercises as completed by checking them off, and use the timer for rest periods.</p>
         </div>
         <div id="exerciseList"></div>
         <div id="congratulationsMessage" class="congratulations hidden">You did it!</div>
+        <div id="loadingIndicator" class="hidden">Loading...</div>
     </div>
     <script src="script.js"></script>
 </body>
