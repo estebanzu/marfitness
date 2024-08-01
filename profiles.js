@@ -1,11 +1,13 @@
-export function loadProfiles() {
-    return fetch('profiles.json')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        });
+export async function loadProfiles() {
+    try {
+        const response = await fetch('profiles.json');
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return await response.json();
+    } catch (error) {
+        console.error('Error loading profiles:', error);
+    }
 }
 
 export function populateProfileSelect(profiles) {

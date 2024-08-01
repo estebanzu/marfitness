@@ -1,19 +1,21 @@
 let timers = {};
 let intervals = {};
 
-export function loadExercises(url) {
-    document.getElementById('loadingIndicator').classList.remove('hidden');
-    return fetch(url)
-        .then(response => response.json())
-        .then(data => {
-            document.getElementById('loadingIndicator').classList.add('hidden');
-            document.getElementById('ownerName').innerText = data.owner;
-            createExerciseList(data.exercises);
-        })
-        .catch(error => {
-            document.getElementById('loadingIndicator').classList.add('hidden');
-            console.error('Error loading exercises:', error);
-        });
+export async function loadExercises(url) {
+    try {
+        document.getElementById('loadingIndicator').classList.remove('hidden');
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        document.getElementById('loadingIndicator').classList.add('hidden');
+        document.getElementById('ownerName').innerText = data.owner;
+        createExerciseList(data.exercises);
+    } catch (error) {
+        document.getElementById('loadingIndicator').classList.add('hidden');
+        console.error('Error loading exercises:', error);
+    }
 }
 
 export function createExerciseList(exercises) {
@@ -31,7 +33,8 @@ export function createExerciseList(exercises) {
         title.className = 'exercise-title-button';
         title.id = `exercise_${index}_title`;
         title.innerText = exercise.name;
-        title.addEventListener('click', () => toggleExercise(index));
+        title.dataset.index = index;
+        title.addEventListener('click', () => toggleElementVisibility(document.getElementById(`exercise_${index}_details`)));
 
         const details = document.createElement('div');
         details.className = 'exercise-details hidden';
@@ -48,9 +51,19 @@ export function createExerciseList(exercises) {
                     <div><b><span id="timer_${index}" class="timer"></span></b></div>
                 </div>
                 <div class="right-column">
-                    Series: ${exercise.series} <br> Repeats: ${exercise.repeats} <br>  Rest: ${exercise.rest} seconds <br>  Weight: ${exercise.weight} kg <br>
+                    Series: ${exercise.series} <br> Repeats: ${exercise.repeats} <br> Rest: ${exercise.rest} seconds <br> Weight: ${exercise.weight} kg <br>
                     <a href="${exercise.video}" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="Watch Video" class="video-icon"></a>
                 </div>
+            </div>
+            <div class="progress-container">
+                <ul class="progressbar" id="progressbar_${index}">
+                    ${Array.from({ length: exercise.series }).map((_, i) => `
+                        <li>
+                            <input type="radio" name="series_${index}" id="series_${index}_${i}" onchange="handleSeriesCompletion(${index})">
+                            <label for="series_${index}_${i}">Serie ${i + 1}</label>
+                        </li>
+                    `).join('')}
+                </ul>
             </div>
         `;
 
@@ -59,24 +72,6 @@ export function createExerciseList(exercises) {
         exerciseDiv.appendChild(details);
         exerciseList.appendChild(exerciseDiv);
     });
-}
-
-function toggleExercise(index) {
-    const exerciseDetails = document.getElementById(`exercise_${index}_details`);
-    exerciseDetails.classList.toggle('hidden');
-    checkAllExercises();
-}
-
-function checkAllExercises() {
-    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-    const allChecked = Array.from(checkboxes).every(checkbox => checkbox.checked);
-    const message = document.getElementById('congratulationsMessage');
-
-    if (allChecked) {
-        message.classList.remove('hidden');
-    } else {
-        message.classList.add('hidden');
-    }
 }
 
 export function startPauseTimer(index, duration) {
@@ -113,4 +108,42 @@ export function restartTimer(index, duration) {
     intervals[index] = null;
     timers[index] = duration;
     startPauseTimer(index, duration);
+}
+
+function toggleElementVisibility(element) {
+    element.classList.toggle('hidden');
+    element.classList.toggle('visible');
+}
+
+function handleSeriesCompletion(index) {
+    const seriesRadios = document.querySelectorAll(`input[name="series_${index}"]`);
+    const allChecked = Array.from(seriesRadios).every(radio => radio.checked);
+
+    if (allChecked) {
+        const title = document.getElementById(`exercise_${index}_title`);
+        title.style.textDecoration = 'line-through';
+
+        const exerciseDetails = document.getElementById(`exercise_${index}_details`);
+        exerciseDetails.classList.add('hidden');
+    }
+
+    // Update the progress bar
+    const progressbar = document.getElementById(`progressbar_${index}`);
+    const completedSteps = Array.from(seriesRadios).filter(radio => radio.checked).length;
+    const totalSteps = seriesRadios.length;
+
+    progressbar.style.setProperty('--completed-steps', completedSteps);
+    progressbar.style.setProperty('--total-steps', totalSteps);
+}
+
+function checkAllExercises() {
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    const allChecked = Array.from(checkboxes).every(checkbox => checkbox.checked);
+    const message = document.getElementById('congratulationsMessage');
+
+    if (allChecked) {
+        message.classList.remove('hidden');
+    } else {
+        message.classList.add('hidden');
+    }
 }

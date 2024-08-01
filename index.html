@@ -7,19 +7,18 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <div class="banner">
-            <h1>Welcome to Your Fitness Journey</h1>
-        </div>
-        <div class="profile-selection">
+    <header class="banner">
+        <h1>Welcome to Your Fitness Journey</h1>
+    </header>
+    <main class="container">
+        <section class="profile-selection">
             <label for="profileSelect">Select Profile:</label>
             <select id="profileSelect" aria-label="Profile Selection">
-                <option value="marcia">Marcia Calderon</option>
-                <option value="dummy">Dummy User</option>
+                <!-- Options will be populated dynamically -->
             </select>
-        </div>
+        </section>
         <div class="owner" id="ownerName"></div>
-        <div class="routine-selection">
+        <section class="routine-selection">
             <label for="routine1" class="routine-label">
                 <input type="checkbox" id="routine1" class="routine-checkbox" checked>
                 Routine 1
@@ -28,15 +27,15 @@
                 <input type="checkbox" id="routine2" class="routine-checkbox">
                 Routine 2
             </label>
-        </div>
-        <div class="instructions">
+        </section>
+        <section class="instructions">
             <p>Select a routine to load the exercises.</p>
             <p>Mark exercises as completed by checking them off, and use the timer for rest periods.</p>
-        </div>
+        </section>
         <ul id="exerciseList" class="exercise-list"></ul>
         <div id="congratulationsMessage" class="congratulations hidden">You did it!</div>
         <div id="loadingIndicator" class="loading hidden">Loading...</div>
-    </div>
+    </main>
     <footer>
         Made with love for my wife ❤️
     </footer>
