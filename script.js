@@ -91,7 +91,7 @@ function createExerciseList(exercises) {
         details.innerHTML = `Series: ${exercise.series} | Repeats: ${exercise.repeats} | Rest: ${exercise.rest} seconds | Weight: ${exercise.weight} kg <br> <hr>
                              <button onclick="startPauseTimer(${index}, ${exercise.rest})">Start/Pause</button>
                              <button class="restart-button" onclick="restartTimer(${index}, ${exercise.rest})">Restart</button>
-                             <span id="timer_${index}"></span><br><a href="${exercise.video}" target="_blank">Watch Video</a>`;
+                             <b><span id="timer_${index}"></span></b> <br><hr><br><a href="${exercise.video}" target="_blank">Watch Video</a>`;
 
         exerciseHeader.appendChild(checkbox);
         exerciseHeader.appendChild(title);
