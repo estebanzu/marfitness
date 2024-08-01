@@ -2,67 +2,67 @@
     "owner": "Marcia Calderon Campos",
     "exercises": [
       {
-        "name": "Leg Extension Machine",
+        "name": "extension de rodilla",
         "series": 3,
         "repeats": 12,
         "rest": 45,
-        "weight": 50,
+        "weight": 24.1,
         "video": "https://www.youtube.com/watch?v=8ZwS4MpgupQ"
       },
       {
-        "name": "Hip Extension Machine",
+        "name": "extension de cadera",
         "series": 3,
         "repeats": 12,
         "rest": 45,
-        "weight": 40,
+        "weight": 16.3,
         "video": "https://www.youtube.com/watch?v=aO3TxzBtqKA"
       },
       {
-        "name": "Leg Curl Machine",
+        "name": "flexion de rodilla maquina",
         "series": 3,
         "repeats": 12,
         "rest": 45,
-        "weight": 45,
+        "weight": 19.1,
         "video": "https://www.youtube.com/watch?v=iiIwg6xzHaw"
       },
       {
-        "name": "Front Shoulder Raise with Dumbbell (Pronated Grip)",
+        "name": "frontal de hombro con manc agarre prono",
+        "series": 3,
+        "repeats": 12,
+        "rest": 45,
+        "weight": 3,
+        "video": "https://www.youtube.com/watch?v=-t7fuZ0KhDA"
+      },
+      {
+        "name": "lateral hombro con manc",
+        "series": 3,
+        "repeats": 12,
+        "rest": 45,
+        "weight": 3,
+        "video": "https://www.youtube.com/watch?v=3VcKaXpzqRo"
+      },
+      {
+        "name": "Tursters con mancuerna",
+        "series": 3,
+        "repeats": 12,
+        "rest": 45,
+        "weight": 5,
+        "video": "https://www.youtube.com/watch?v=CVqSnpCstUc"
+      },
+      {
+        "name": "Soleos en maquina",
+        "series": 3,
+        "repeats": 12,
+        "rest": 45,
+        "weight": 5,
+        "video": "https://www.youtube.com/watch?v=sgES7g8aP6U"
+      },
+      {
+        "name": "Aduccion de cadera maquina",
         "series": 3,
         "repeats": 12,
         "rest": 45,
         "weight": 10,
-        "video": "https://www.youtube.com/watch?v=-t7fuZ0KhDA"
-      },
-      {
-        "name": "Lateral Shoulder Raise with Dumbbells",
-        "series": 3,
-        "repeats": 12,
-        "rest": 45,
-        "weight": 8,
-        "video": "https://www.youtube.com/watch?v=3VcKaXpzqRo"
-      },
-      {
-        "name": "Seated Dumbbell Thrusters",
-        "series": 3,
-        "repeats": 12,
-        "rest": 45,
-        "weight": 15,
-        "video": "https://www.youtube.com/watch?v=CVqSnpCstUc"
-      },
-      {
-        "name": "Seated Calf Raise Machine",
-        "series": 3,
-        "repeats": 12,
-        "rest": 45,
-        "weight": 25,
-        "video": "https://www.youtube.com/watch?v=sgES7g8aP6U"
-      },
-      {
-        "name": "Hip Adduction Machine",
-        "series": 3,
-        "repeats": 12,
-        "rest": 45,
-        "weight": 30,
         "video": "https://www.youtube.com/watch?v=Z6dIKY9ScbY"
       }
     ]
