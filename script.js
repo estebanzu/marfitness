@@ -1,16 +1,39 @@
 document.addEventListener('DOMContentLoaded', () => {
     const routine1Checkbox = document.getElementById('routine1');
     const routine2Checkbox = document.getElementById('routine2');
+    const profileSelect = document.getElementById('profileSelect');
 
     routine1Checkbox.addEventListener('change', () => handleRoutineSelection('routine1'));
     routine2Checkbox.addEventListener('change', () => handleRoutineSelection('routine2'));
+    profileSelect.addEventListener('change', submitRoutine);
 
     document.querySelector('button').addEventListener('click', submitRoutine);
+
+    loadProfiles();
 });
 
-const ownerName = "Marcia Calderon Campos";
-const routine1Url = "https://raw.githubusercontent.com/estebanzu/marfitness/main/routine1.json";
-const routine2Url = "https://raw.githubusercontent.com/estebanzu/marfitness/main/routine2.json";
+let profiles = {};
+
+function loadProfiles() {
+    fetch('profiles.json')
+        .then(response => response.json())
+        .then(data => {
+            profiles = data;
+            populateProfileSelect();
+        })
+        .catch(error => console.error('Error loading profiles:', error));
+}
+
+function populateProfileSelect() {
+    const profileSelect = document.getElementById('profileSelect');
+    profileSelect.innerHTML = ''; // Clear existing options
+    profiles.forEach(profile => {
+        const option = document.createElement('option');
+        option.value = profile.id;
+        option.text = profile.name;
+        profileSelect.add(option);
+    });
+}
 
 function toggleExercise(index) {
     const checkbox = document.getElementById(`exercise_${index}`);
@@ -41,7 +64,9 @@ function startPauseTimer(index, duration) {
     if (intervals[index]) {
         clearInterval(intervals[index]);
         intervals[index] = null;
+        timerElement.classList.remove('enabled');
     } else {
+        timerElement.classList.add('enabled');
         intervals[index] = setInterval(() => {
             const minutes = parseInt(timers[index] / 60, 10);
             const seconds = parseInt(timers[index] % 60, 10);
@@ -52,10 +77,12 @@ function startPauseTimer(index, duration) {
                 clearInterval(intervals[index]);
                 intervals[index] = null;
                 timerElement.textContent = "Rest Over";
+                timerElement.classList.remove('enabled');
             }
         }, 1000);
     }
 }
+
 
 function restartTimer(index, duration) {
     clearInterval(intervals[index]);
@@ -90,12 +117,12 @@ function createExerciseList(exercises) {
         details.id = `exercise_${index}_details`;
         details.innerHTML = `Series: ${exercise.series} | Repeats: ${exercise.repeats} | Rest: ${exercise.rest} seconds | Weight: ${exercise.weight} kg <br> <hr>
                              <button onclick="startPauseTimer(${index}, ${exercise.rest})">
-                                 <img src="https://cdn-icons-png.flaticon.com/512/27/27185.png" alt="Start/Pause"> Start/Pause
+                                 <img src="https://cdn-icons-png.flaticon.com/512/27/27185.png" alt="Start/Pause" class="button-icon"> Start/Pause
                              </button>
                              <button class="restart-button" onclick="restartTimer(${index}, ${exercise.rest})">
-                                 <img src="https://static-00.iconduck.com/assets.00/reboot-icon-2029x2048-gq6tomyw.png" alt="Restart"> Restart
-                             </button>
-                             <b><span id="timer_${index}"></span></b> <br><hr><br><center> <a href="${exercise.video}" target="_blank">Watch Video</a></center>`;
+                                 <img src="https://static-00.iconduck.com/assets.00/reboot-icon-2029x2048-gq6tomyw.png" alt="Restart" class="button-icon"> Restart
+                             </button> <br>
+                             <center><b><span id="timer_${index}" class="timer"></span></b></center> <br><hr><br><center> <a href="${exercise.video}" target="_blank">Watch Video</a></center>`;
 
         exerciseHeader.appendChild(checkbox);
         exerciseHeader.appendChild(title);
@@ -117,9 +144,9 @@ function checkAllExercises() {
     }
 }
 
-function loadExercises(githubUrl) {
+function loadExercises(url) {
     document.getElementById('loadingIndicator').classList.remove('hidden');
-    fetch(githubUrl)
+    fetch(url)
         .then(response => response.json())
         .then(data => {
             document.getElementById('loadingIndicator').classList.add('hidden');
@@ -135,11 +162,13 @@ function loadExercises(githubUrl) {
 function submitRoutine() {
     const routine1Checkbox = document.getElementById('routine1');
     const routine2Checkbox = document.getElementById('routine2');
+    const selectedProfileId = document.getElementById('profileSelect').value;
+    const selectedProfile = profiles.find(profile => profile.id === selectedProfileId);
 
     if (routine1Checkbox.checked) {
-        loadExercises(routine1Url);
+        loadExercises(selectedProfile.routine1Url);
     } else if (routine2Checkbox.checked) {
-        loadExercises(routine2Url);
+        loadExercises(selectedProfile.routine2Url);
     } else {
         alert("Please select a routine.");
     }

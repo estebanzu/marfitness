@@ -3,13 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gym Exercises</title>
+    <title>Fitness Journey</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
         <div class="banner">
-            <h1>August Exercises</h1>
+            <h1>Welcome to Your Fitness Journey</h1>
+        </div>
+        <div class="profile-selection">
+            <label for="profileSelect">Select Profile:</label>
+            <select id="profileSelect" aria-label="Profile Selection">
+                <option value="marcia">Marcia Calderon</option>
+                <option value="dummy">Dummy User</option>
+            </select>
         </div>
         <div class="owner" id="ownerName"></div>
         <div class="routine-selection">
@@ -21,7 +28,6 @@
                 <input type="checkbox" id="routine2">
                 Routine 2
             </label>
-            <br>
             <button onclick="submitRoutine()" aria-label="Change Routine">Change Routine</button>
             <div class="instruction">If you want to change the routine, select it and click on submit again.</div>
         </div>
@@ -29,10 +35,13 @@
             <p>Select a routine and click "Change Routine" to load the exercises.</p>
             <p>Mark exercises as completed by checking them off, and use the timer for rest periods.</p>
         </div>
-        <div id="exerciseList"></div>
+        <ul id="exerciseList" class="exercise-list"></ul>
         <div id="congratulationsMessage" class="congratulations hidden">You did it!</div>
-        <div id="loadingIndicator" class="hidden">Loading...</div>
+        <div id="loadingIndicator" class="loading hidden">Loading...</div>
     </div>
+    <footer>
+        Made with love for my wife ❤️
+    </footer>
     <script src="script.js"></script>
 </body>
 </html>

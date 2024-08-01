@@ -1,0 +1,20 @@
+[
+    {
+        "id": "marcia",
+        "name": "Marcia Calderon Campos",
+        "password": "password123",
+        "phone": "86489691",
+        "customer": "CustomerA",
+        "routine1Url": "https://raw.githubusercontent.com/estebanzu/marfitness/main/routine1.json",
+        "routine2Url": "https://raw.githubusercontent.com/estebanzu/marfitness/main/routine2.json"
+    },
+    {
+        "id": "esteban",
+        "name": "Esteban ZUniga",
+        "password": "password123",
+        "phone": "885544445",
+        "customer": "CustomerB",
+        "routine1Url": "https://raw.githubusercontent.com/estebanzu/marfitness/main/routine2.json",
+        "routine2Url": "https://raw.githubusercontent.com/estebanzu/marfitness/main/routine1.json"
+    }
+]
