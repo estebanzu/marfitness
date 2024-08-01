@@ -1,0 +1,151 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f8f9fa;
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+}
+
+.banner {
+    background-color: teal;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+h1 {
+    margin: 0;
+    font-size: 1.8em;
+}
+
+.owner {
+    font-style: italic;
+    text-align: center;
+    color: #6c757d;
+    margin-bottom: 20px;
+}
+
+.routine-selection {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.routine-selection label {
+    margin-right: 15px;
+    font-size: 1.1em;
+}
+
+.routine-selection button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+.routine-selection button:hover {
+    background-color: #0056b3;
+}
+
+.routine-selection .instruction {
+    margin-top: 10px;
+    color: #343a40;
+    font-size: 0.9em;
+}
+
+.exercise {
+    background-color: #ffffff;
+    color: #343a40;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.exercise-header {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.exercise-header input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.exercise-title {
+    font-weight: bold;
+    flex-grow: 1;
+    font-size: 1.2em;
+}
+
+.exercise-details {
+    margin-top: 10px;
+    width: 100%;
+}
+
+.exercise-details a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.exercise-details a:hover {
+    text-decoration: underline;
+}
+
+.exercise-details button {
+    background-color: #28a745;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-right: 5px;
+    transition: background-color 0.3s;
+}
+
+.exercise-details button:hover {
+    background-color: #218838;
+}
+
+.exercise-details .restart-button {
+    background-color: #dc3545;
+}
+
+.exercise-details .restart-button:hover {
+    background-color: #c82333;
+}
+
+.strikethrough {
+    text-decoration: line-through;
+    color: #6c757d;
+}
+
+.hidden {
+    display: none;
+}
+
+.congratulations {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1.5em;
+    color: #28a745;
+}
