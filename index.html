@@ -20,19 +20,17 @@
         </div>
         <div class="owner" id="ownerName"></div>
         <div class="routine-selection">
-            <label>
-                <input type="checkbox" id="routine1">
+            <label for="routine1" class="routine-label">
+                <input type="checkbox" id="routine1" class="routine-checkbox" checked>
                 Routine 1
             </label>
-            <label>
-                <input type="checkbox" id="routine2">
+            <label for="routine2" class="routine-label">
+                <input type="checkbox" id="routine2" class="routine-checkbox">
                 Routine 2
             </label>
-            <button onclick="submitRoutine()" aria-label="Change Routine">Change Routine</button>
-            <div class="instruction">If you want to change the routine, select it and click on submit again.</div>
         </div>
         <div class="instructions">
-            <p>Select a routine and click "Change Routine" to load the exercises.</p>
+            <p>Select a routine to load the exercises.</p>
             <p>Mark exercises as completed by checking them off, and use the timer for rest periods.</p>
         </div>
         <ul id="exerciseList" class="exercise-list"></ul>
@@ -42,6 +40,6 @@
     <footer>
         Made with love for my wife ❤️
     </footer>
-    <script src="script.js"></script>
+    <script type="module" src="main.js"></script>
 </body>
 </html>

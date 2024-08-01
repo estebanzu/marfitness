@@ -36,18 +36,8 @@ function populateProfileSelect() {
 }
 
 function toggleExercise(index) {
-    const checkbox = document.getElementById(`exercise_${index}`);
-    const exerciseTitle = document.getElementById(`exercise_${index}_title`);
     const exerciseDetails = document.getElementById(`exercise_${index}_details`);
-    const isChecked = checkbox.checked;
-
-    if (isChecked) {
-        exerciseTitle.classList.add('strikethrough');
-        exerciseDetails.classList.add('hidden');
-    } else {
-        exerciseTitle.classList.remove('strikethrough');
-        exerciseDetails.classList.remove('hidden');
-    }
+    exerciseDetails.classList.toggle('hidden');
     checkAllExercises();
 }
 
@@ -83,7 +73,6 @@ function startPauseTimer(index, duration) {
     }
 }
 
-
 function restartTimer(index, duration) {
     clearInterval(intervals[index]);
     intervals[index] = null;
@@ -102,33 +91,39 @@ function createExerciseList(exercises) {
         const exerciseHeader = document.createElement('div');
         exerciseHeader.className = 'exercise-header';
 
-        const checkbox = document.createElement('input');
-        checkbox.type = 'checkbox';
-        checkbox.id = `exercise_${index}`;
-        checkbox.addEventListener('click', () => toggleExercise(index));
-
         const title = document.createElement('div');
-        title.className = 'exercise-title';
+        title.className = 'exercise-title-button';
         title.id = `exercise_${index}_title`;
         title.innerText = exercise.name;
+        title.addEventListener('click', () => toggleExercise(index));
 
         const details = document.createElement('div');
-        details.className = 'exercise-details';
+        details.className = 'exercise-details hidden';
         details.id = `exercise_${index}_details`;
-        details.innerHTML = `Series: ${exercise.series} | Repeats: ${exercise.repeats} | Rest: ${exercise.rest} seconds | Weight: ${exercise.weight} kg <br> <hr>
-                             <button onclick="startPauseTimer(${index}, ${exercise.rest})">
-                                 <img src="https://cdn-icons-png.flaticon.com/512/27/27185.png" alt="Start/Pause" class="button-icon"> Start/Pause
-                             </button>
-                             <button class="restart-button" onclick="restartTimer(${index}, ${exercise.rest})">
-                                 <img src="https://static-00.iconduck.com/assets.00/reboot-icon-2029x2048-gq6tomyw.png" alt="Restart" class="button-icon"> Restart
-                             </button> <br>
-                             <center><b><span id="timer_${index}" class="timer"></span></b></center> <br><hr><br><center> <a href="${exercise.video}" target="_blank">Watch Video</a></center>`;
+        details.innerHTML = `
+            <div class="exercise-details-container">
+                <div class="left-column">
+                    <button onclick="startPauseTimer(${index}, ${exercise.rest})">
+                        <img src="https://cdn-icons-png.flaticon.com/512/27/27185.png" alt="Start/Pause" class="button-icon"> Start/Pause
+                    </button>
+                    <button class="restart-button" onclick="restartTimer(${index}, ${exercise.rest})">
+                        <img src="https://static-00.iconduck.com/assets.00/reboot-icon-2029x2048-gq6tomyw.png" alt="Restart" class="button-icon"> Restart
+                    </button>
+                    <div><b><span id="timer_${index}" class="timer"></span></b></div>
+                </div>
+                <div class="right-column">
+                    Series: ${exercise.series} <br> Repeats: ${exercise.repeats} <br>  Rest: ${exercise.rest} seconds <br>  Weight: ${exercise.weight} kg <br>
+                    <a href="${exercise.video}" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="Watch Video" class="video-icon"></a>
+                </div>
+            </div>
+            
+`;
 
-        exerciseHeader.appendChild(checkbox);
-        exerciseHeader.appendChild(title);
-        exerciseDiv.appendChild(exerciseHeader);
-        exerciseDiv.appendChild(details);
-        exerciseList.appendChild(exerciseDiv);
+exerciseHeader.appendChild(title);
+exerciseDiv.appendChild(exerciseHeader);
+exerciseDiv.appendChild(details);
+exerciseList.appendChild(exerciseDiv);
+
     });
 }
 
