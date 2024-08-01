@@ -89,9 +89,13 @@ function createExerciseList(exercises) {
         details.className = 'exercise-details';
         details.id = `exercise_${index}_details`;
         details.innerHTML = `Series: ${exercise.series} | Repeats: ${exercise.repeats} | Rest: ${exercise.rest} seconds | Weight: ${exercise.weight} kg <br> <hr>
-                             <button onclick="startPauseTimer(${index}, ${exercise.rest})">Start/Pause</button>
-                             <button class="restart-button" onclick="restartTimer(${index}, ${exercise.rest})">Restart</button>
-                             <b><span id="timer_${index}"></span></b> <br><hr><br><a href="${exercise.video}" target="_blank">Watch Video</a>`;
+                             <button onclick="startPauseTimer(${index}, ${exercise.rest})">
+                                 <img src="https://cdn-icons-png.flaticon.com/512/27/27185.png" alt="Start/Pause"> Start/Pause
+                             </button>
+                             <button class="restart-button" onclick="restartTimer(${index}, ${exercise.rest})">
+                                 <img src="https://static-00.iconduck.com/assets.00/reboot-icon-2029x2048-gq6tomyw.png" alt="Restart"> Restart
+                             </button>
+                             <b><span id="timer_${index}"></span></b> <br><hr><br><center> <a href="${exercise.video}" target="_blank">Watch Video</a></center>`;
 
         exerciseHeader.appendChild(checkbox);
         exerciseHeader.appendChild(title);
@@ -114,13 +118,18 @@ function checkAllExercises() {
 }
 
 function loadExercises(githubUrl) {
+    document.getElementById('loadingIndicator').classList.remove('hidden');
     fetch(githubUrl)
         .then(response => response.json())
         .then(data => {
+            document.getElementById('loadingIndicator').classList.add('hidden');
             document.getElementById('ownerName').innerText = data.owner;
             createExerciseList(data.exercises);
         })
-        .catch(error => console.error('Error loading exercises:', error));
+        .catch(error => {
+            document.getElementById('loadingIndicator').classList.add('hidden');
+            console.error('Error loading exercises:', error);
+        });
 }
 
 function submitRoutine() {
